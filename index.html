@@ -5,68 +5,538 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kopenhagen shortlist — Hemelvaart 2026</title>
   <style>
-    :root { --bg:#f6f7fb; --card:#fff; --text:#111827; --muted:#6b7280; --line:#e5e7eb; --accent:#2563eb; --good:#065f46; --warn:#92400e; --tag:#f3f4f6; }
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
-    .wrap{max-width:1160px;margin:0 auto;padding:24px 16px 48px} h1{margin:0 0 10px;font-size:32px}.intro{color:var(--muted);max-width:900px;margin-bottom:24px}
-    .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:24px}.meta .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
-    .section-title{margin:28px 0 12px;font-size:22px}.list{display:grid;gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:340px 1fr}.card img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;min-height:240px}.content{padding:18px}
-    .topline{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:8px}.rank{display:inline-block;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}h2{margin:0 0 6px;font-size:23px}.subtitle{color:var(--muted)}.price{font-size:26px;font-weight:700;white-space:nowrap}.usd{color:var(--muted);font-size:13px;margin-top:2px;text-align:right}
-    .facts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}.pill{border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:14px;background:#fafafa}.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 10px}.badge{background:var(--tag);border-radius:999px;padding:6px 10px;font-size:13px}.badge.good{color:var(--good);background:#ecfdf5}.badge.warn{color:var(--warn);background:#fff7ed}
-    .desc{margin:0 0 12px}.details{display:grid;gap:6px;margin:0 0 12px;color:#374151;font-size:15px}.links a{display:inline-block;margin-right:14px;color:var(--accent);text-decoration:none;font-weight:600}.note{margin-top:28px;color:var(--muted);font-size:14px}
-    @media (max-width:860px){.card{grid-template-columns:1fr}.card img{min-height:220px;max-height:240px}.topline{flex-direction:column}.usd{text-align:left}}
-    @media (max-width:520px){.wrap{padding:16px 12px 36px}h1{font-size:26px}.intro{font-size:15px}.content{padding:14px}h2{font-size:20px}.price{font-size:24px}.card img{min-height:180px;max-height:200px}.facts,.badge-row{gap:6px}.pill,.badge{font-size:12px;padding:5px 8px}.links a{display:block;margin:0 0 8px 0}}
+    :root {
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#2563eb;
+      --good:#065f46;
+      --warn:#92400e;
+      --good-bg:#ecfdf5;
+      --warn-bg:#fff7ed;
+      --soft:#f9fafb;
+      --shadow:0 10px 30px rgba(17,24,39,.05);
+    }
+
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    .wrap { max-width:1180px; margin:0 auto; padding:24px 16px 48px; }
+    h1 { margin:0 0 10px; font-size:32px; line-height:1.15; }
+    .intro { color:var(--muted); max-width:940px; margin:0 0 24px; }
+
+    .meta {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:12px;
+      margin-bottom:28px;
+    }
+    .meta .box {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
+
+    .section-title { margin:30px 0 14px; font-size:22px; }
+    .list { display:grid; gap:18px; }
+
+    .card {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:320px 1fr;
+      box-shadow:var(--shadow);
+    }
+
+    .card img {
+      width:100%;
+      height:100%;
+      min-height:280px;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      background:#e5e7eb;
+    }
+
+    .content { padding:18px; }
+    .rank {
+      display:inline-block;
+      margin-bottom:8px;
+      font-size:12px;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .topline {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:14px;
+      margin-bottom:10px;
+    }
+
+    h2 { margin:0 0 6px; font-size:23px; line-height:1.2; }
+    .subtitle { color:var(--muted); }
+    .price-box { text-align:right; min-width:140px; }
+    .price { font-size:28px; font-weight:800; line-height:1; white-space:nowrap; }
+    .usd { color:var(--muted); font-size:13px; margin-top:6px; }
+
+    .facts,
+    .badge-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .facts { margin:12px 0 12px; }
+    .badge-row { margin:0 0 14px; }
+
+    .pill,
+    .badge {
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:13px;
+      line-height:1.2;
+    }
+
+    .pill {
+      border:1px solid var(--line);
+      background:var(--soft);
+    }
+
+    .badge { background:#f3f4f6; }
+    .badge.good { color:var(--good); background:var(--good-bg); }
+    .badge.warn { color:var(--warn); background:var(--warn-bg); }
+
+    .desc { margin:0 0 14px; }
+
+    .detail-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin:0 0 14px;
+    }
+
+    .detail-box {
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fcfcfd;
+      padding:12px;
+      min-width:0;
+    }
+
+    .detail-box strong {
+      display:block;
+      margin-bottom:4px;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      color:#374151;
+    }
+
+    .pros-cons {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin:0 0 14px;
+    }
+
+    .pros-cons h3 {
+      margin:0 0 6px;
+      font-size:15px;
+    }
+
+    .pros-cons ul {
+      margin:0;
+      padding-left:18px;
+      color:#374151;
+    }
+
+    .pros-cons li + li { margin-top:4px; }
+
+    .links a {
+      display:inline-block;
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .links a:hover { text-decoration:underline; }
+    .note { margin-top:28px; color:var(--muted); font-size:14px; }
+
+    @media (max-width:920px) {
+      .card { grid-template-columns:1fr; }
+      .card img { min-height:220px; max-height:260px; }
+      .topline { flex-direction:column; }
+      .price-box { text-align:left; min-width:auto; }
+    }
+
+    @media (max-width:640px) {
+      .wrap { padding:16px 12px 36px; }
+      h1 { font-size:27px; }
+      .content { padding:14px; }
+      h2 { font-size:20px; }
+      .price { font-size:24px; }
+      .detail-grid,
+      .pros-cons { grid-template-columns:1fr; }
+      .card img { min-height:180px; max-height:210px; }
+      .pill,
+      .badge { font-size:12px; padding:5px 8px; }
+      .links a { display:block; margin-top:4px; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>Kopenhagen shortlist — Hemelvaart 2026</h1>
-    <p class="intro">Voor <strong>woensdag 13 mei t/m zondag 17 mei 2026</strong>. Nu opnieuw gecontroleerd op <strong>4 volwassenen</strong>, minimaal <strong>2 slaapkamers</strong> en <strong>3 bedden</strong>. Ik heb dus die rare, misleidende 1-persoonsachtige prijsgevallen eruit gegooid. Wat hier staat zou qua prijs een stuk realistischer moeten zijn voor jullie bezetting.</p>
+    <p class="intro">Voor <strong>woensdag 13 mei t/m zondag 17 mei 2026</strong>. Alles hieronder is gelijkgetrokken naar dezelfde opbouw voor <strong>4 volwassenen</strong>, minimaal <strong>2 slaapkamers</strong> en minimaal <strong>3 bedden</strong>. Zo kun je per optie veel makkelijker appels met appels vergelijken: prijs, ligging, parkeerinschatting, sfeer, sterke punten en de kleine risico's.</p>
 
     <div class="meta">
       <div class="box"><strong>Reisdata</strong><br>13 mei 2026 → 17 mei 2026</div>
       <div class="box"><strong>Gezelschap</strong><br>4 volwassenen · min. 2 slaapkamers · min. 3 bedden</div>
-      <div class="box"><strong>Extra wens</strong><br>Parkeren waar mogelijk aangegeven</div>
+      <div class="box"><strong>Extra wens</strong><br>Parkeren waar mogelijk apart beoordeeld</div>
     </div>
 
     <h3 class="section-title">Beste shortlist</h3>
     <div class="list">
       <article class="card">
         <img src="https://a0.muscache.com/im/pictures/miso/Hosting-900423174683523109/original/fd1cfdef-c22b-44c7-90d3-f6e7d64083cb.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Amager Strand Townhouse" />
-        <div class="content"><div class="rank">Beste allround match</div><div class="topline"><div><h2>Amager Strand Townhouse B&amp;W next to beach</h2><div class="subtitle">Home in Copenhagen · superhost · 5,0/5 uit 11 reviews</div></div><div><div class="price">€1.104</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">5 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">2,5 badkamers</span></div><div class="badge-row"><span class="badge good">Waarschijnlijk parkeren aanwezig</span><span class="badge">Dicht bij strand</span></div><p class="desc">Sterke combinatie van ruimte, comfort en sfeer. Vooral aantrekkelijk als je net iets meer vakantiegevoel wilt dan een standaard stadsappartement geeft.</p><div class="details"><div><strong>Inrichting / type:</strong> townhouse / huis, dus ruimtelijker en meer verdeeld over meerdere kamers/verdiepingen.</div><div><strong>Ligging t.o.v. centrum:</strong> ongeveer 4,4 km van het centrum.</div><div><strong>Bijzonderheden:</strong> extra badkamer maakt dit praktisch voor 4 personen.</div></div><div class="links"><a href="https://www.airbnb.com/rooms/900423174683523109?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div>
+        <div class="content">
+          <div class="rank">#1 · Beste allround match</div>
+          <div class="topline">
+            <div>
+              <h2>Amager Strand Townhouse B&amp;W next to beach</h2>
+              <div class="subtitle">Home in Copenhagen · superhost · 5,0/5 uit 11 reviews</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.104</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">5 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">2,5 badkamers</span></div>
+          <div class="badge-row"><span class="badge good">Parkeren waarschijnlijk aanwezig</span><span class="badge">Dicht bij strand</span><span class="badge">Ruimtelijk townhouse</span></div>
+          <p class="desc">Dit is de meest complete mix van ruimte, vakantiegevoel en praktische indeling. Het voelt meer als een echt verblijfshuis dan als een standaard city flat, terwijl je nog steeds behoorlijk dicht bij Kopenhagen blijft.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Townhouse / huis met meerdere zones en verdiepingen; waarschijnlijk luchtiger en comfortabeler voor vier volwassenen dan een compact appartement.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>Ongeveer 4,4 km van het centrum; niet supercentraal, maar wel aantrekkelijk als strand en meer rust ook meetellen.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>Extra badkamer is echt handig met vier volwassenen.</li><li>Sterke prijs voor 3 slaapkamers.</li><li>Strandligging geeft meer vakantiegevoel dan veel andere opties.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Minder midden-in-centrum dan de binnenstadopties.</li><li>Parkeren lijkt positief, maar niet zo hard bevestigd als bij expliciete privé-parkeerplekken.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/900423174683523109?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
       </article>
 
       <article class="card">
         <img src="https://a0.muscache.com/im/pictures/78d4de3d-72f1-4dcf-8d09-d262aecb4ae8.jpg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="Modern Apartment with Water View & Private Terrace" />
-        <div class="content"><div class="rank">Sterke prijs / uitzicht</div><div class="topline"><div><h2>Modern Apartment with Water View &amp; Private Terrace</h2><div class="subtitle">Rental unit in København SV · 4,84/5</div></div><div><div class="price">€1.139</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">4 bedden</span><span class="pill">1 badkamer</span></div><div class="badge-row"><span class="badge warn">Parkeren nog niet gecheckt</span><span class="badge">Waterzicht</span></div><p class="desc">Interessant als je graag iets moderners wilt met terras en uitzicht, maar zonder meteen naar de hoogste prijsklasse te gaan.</p><div class="details"><div><strong>Inrichting / type:</strong> modern appartement met terras; waarschijnlijk lichter en strakker ingericht.</div><div><strong>Ligging t.o.v. centrum:</strong> iets buiten de kern, maar nog steeds stedelijk.</div><div><strong>Bijzonderheden:</strong> 4 bedden is handig als niet iedereen een bed wil delen.</div></div><div class="links"><a href="https://www.airbnb.com/rooms/37311103?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div>
+        <div class="content">
+          <div class="rank">#2 · Sterke prijs / uitzicht</div>
+          <div class="topline">
+            <div>
+              <h2>Modern Apartment with Water View &amp; Private Terrace</h2>
+              <div class="subtitle">Rental unit in København SV · 4,84/5</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.139</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">4 bedden</span><span class="pill">1 badkamer</span></div>
+          <div class="badge-row"><span class="badge warn">Parkeren nog niet hard gecheckt</span><span class="badge">Waterzicht</span><span class="badge">Privéterras</span></div>
+          <p class="desc">Interessante keuze als modern, licht en uitzicht belangrijker zijn dan maximale ruimte. Deze voelt waarschijnlijk strakker en meer design-achtig aan dan de huiselijke opties hoger en lager in de lijst.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Modern appartement met terras; vermoedelijk strak ingericht en prettig als je van een frisse, stedelijke uitstraling houdt.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>København SV ligt wat buiten de historische kern, maar nog steeds in stedelijke zone; meestal prima als je niet per se overal heen wilt lopen.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>Terras en waterzicht geven iets extra's voor relatief nette prijs.</li><li>Vier aparte bedden is praktisch als niet iedereen wil delen.</li><li>Goede balans tussen uitstraling en budget.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Maar één badkamer.</li><li>Locatie lijkt iets minder charmant / centraal dan topopties dichter bij centrum of strand.</li><li>Parkeersituatie nog onzeker.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/37311103?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
       </article>
 
       <article class="card">
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1499869660001298704/original/90d24026-b29b-4171-acf5-983b0dcbdfca.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Nice house in Copenhagen" />
-        <div class="content"><div class="rank">Huiselijk + tuin</div><div class="topline"><div><h2>Nice house in Copenhagen with garden and close to metro</h2><div class="subtitle">Home in Copenhagen · 5,0/5 uit 3 reviews</div></div><div><div class="price">€1.139</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">6 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div><div class="badge-row"><span class="badge good">Free parking gevonden in listingtekst</span><span class="badge">Tuin + metro</span></div><p class="desc">Fijne optie als je liever wat meer woongevoel hebt. Vooral interessant voor een wat rustiger verblijf met tuin en goede metroverbinding.</p><div class="details"><div><strong>Inrichting / type:</strong> echt huis in plaats van compact appartement.</div><div><strong>Ligging t.o.v. centrum:</strong> ongeveer 4,2 km van het centrum.</div><div><strong>Bijzonderheden:</strong> voor auto + metro samen waarschijnlijk een slimme combinatie.</div></div><div class="links"><a href="https://www.airbnb.com/rooms/1499869660001298704?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div>
+        <div class="content">
+          <div class="rank">#3 · Huiselijk + tuin</div>
+          <div class="topline">
+            <div>
+              <h2>Nice house in Copenhagen with garden and close to metro</h2>
+              <div class="subtitle">Home in Copenhagen · 5,0/5 uit 3 reviews</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.139</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">6 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
+          <div class="badge-row"><span class="badge good">Free parking genoemd in tekst</span><span class="badge">Tuin</span><span class="badge">Dicht bij metro</span></div>
+          <p class="desc">Een fijne keuze als je meer woongevoel wilt dan hotelgevoel. Door huis + tuin + metro is dit zo'n optie die misschien niet het meest sexy klinkt, maar in de praktijk heel comfortabel kan uitpakken.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Echt huis in plaats van appartement; vermoedelijk rustiger, huiselijker en prettiger als iedereen wat meer eigen hoekjes wil.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>Ongeveer 4,2 km van het centrum; niet centraal lopend, maar metrocompensatie is hier juist een groot pluspunt.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>Prijs is scherp voor 3 slaapkamers.</li><li>Gratis parkeren in tekst is een belangrijk voordeel.</li><li>Tuin + metro is een zeldzame praktische combinatie.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Nog maar weinig reviews, dus iets minder bewezen dan oudere listings.</li><li>Maar één badkamer voor vier volwassenen.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/1499869660001298704?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
       </article>
 
       <article class="card">
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1191841049262410210/original/d58afd6a-07fc-424c-9ab2-5721e5a6d7d2.jpeg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="Central Apartment with garden, close to airport metro" />
-        <div class="content"><div class="rank">Nette middenmoter</div><div class="topline"><div><h2>Central Apartment with garden, close to airport metro</h2><div class="subtitle">Condo in Frederiksberg · 5,0/5</div></div><div><div class="price">€1.155</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">5 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div><div class="badge-row"><span class="badge warn">Parkeren nog niet gecheckt</span><span class="badge">Metro dichtbij</span></div><p class="desc">Mooie balansoptie tussen ruimte, bereikbaarheid en prijs. Vooral praktisch als OV belangrijk is.</p><div class="details"><div><strong>Inrichting / type:</strong> condo / appartement met tuin-element.</div><div><strong>Ligging t.o.v. centrum:</strong> Frederiksberg, dus relatief centraal maar rustiger dan het toeristische centrum.</div><div><strong>Bijzonderheden:</strong> snelle verbinding richting metro/luchthaven kan hier heel handig zijn.</div></div><div class="links"><a href="https://www.airbnb.com/rooms/1191841049262410210?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div>
+        <div class="content">
+          <div class="rank">#4 · Nette middenmoter</div>
+          <div class="topline">
+            <div>
+              <h2>Central Apartment with garden, close to airport metro</h2>
+              <div class="subtitle">Condo in Frederiksberg · 5,0/5</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.155</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">5 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
+          <div class="badge-row"><span class="badge warn">Parkeren nog niet gecheckt</span><span class="badge">Frederiksberg</span><span class="badge">Metro dichtbij</span></div>
+          <p class="desc">Een praktische balansoptie die nergens extreem uitspringt, maar ook weinig verkeerde dingen doet. Vooral interessant als een rustige, nette buurt en goede OV-koppeling belangrijker zijn dan wow-factor.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Condo / appartement met tuin-element; waarschijnlijk verzorgd, residentieel en minder toeristisch aanvoelend dan een pure centrumflat.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>Frederiksberg voelt relatief centraal maar net wat rustiger en prettiger dan de drukste binnenstad.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>3 slaapkamers voor nog vrij nette prijs.</li><li>Frederiksberg is meestal een prettige uitvalsbasis.</li><li>Goede link richting metro en luchthavenroute.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Geen harde parkeerbevestiging.</li><li>Minder uitgesproken karakter dan strand-, water- of townhouseopties.</li><li>Maar één badkamer.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/1191841049262410210?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
       </article>
 
       <article class="card">
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1146972564997032812/original/15023e1d-034b-485a-817b-29f3e76c814e.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Apartment center of Copenhagen - Private parking" />
-        <div class="content"><div class="rank">Nog steeds interessant, maar duurder</div><div class="topline"><div><h2>Apartment (120 sqm) center of Copenhagen - Private parking</h2><div class="subtitle">Rental unit in Copenhagen · 4,92/5 uit 24 reviews</div></div><div><div class="price">prijs instabiel</div><div class="usd">ik zou deze heel kritisch checken</div></div></div><div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div><div class="badge-row"><span class="badge good">Privé parkeren genoemd</span><span class="badge warn">Prijs leek eerder te springen</span></div><p class="desc">Nog steeds inhoudelijk interessant door locatie en privé parkeren, maar deze zou ik alleen openen als je hem ter plekke handmatig wilt verifiëren.</p><div class="details"><div><strong>Inrichting / type:</strong> groot stadsappartement van 120 m².</div><div><strong>Ligging t.o.v. centrum:</strong> ongeveer 0,4 km van het centrum.</div><div><strong>Bijzonderheden:</strong> qua prijsvertrouwen nu minder sterk dan de opties hierboven.</div></div><div class="links"><a href="https://www.airbnb.com/rooms/1146972564997032812?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div>
+        <div class="content">
+          <div class="rank">#5 · Centrum + privé parkeren, maar check prijs goed</div>
+          <div class="topline">
+            <div>
+              <h2>Apartment (120 sqm) center of Copenhagen - Private parking</h2>
+              <div class="subtitle">Rental unit in Copenhagen · 4,92/5 uit 24 reviews</div>
+            </div>
+            <div class="price-box">
+              <div class="price">Prijs instabiel</div>
+              <div class="usd">handmatig even verifiëren in Airbnb</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
+          <div class="badge-row"><span class="badge good">Privé parkeren expliciet genoemd</span><span class="badge">120 m²</span><span class="badge warn">Prijs leek te springen</span></div>
+          <p class="desc">Inhoudelijk is dit nog steeds een aantrekkelijke listing, vooral omdat centrum + veel ruimte + privé parkeren in Kopenhagen zeldzaam is. Alleen het prijsvertrouwen is hier duidelijk lager dan bij de opties erboven.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Groot stadsappartement van 120 m²; waarschijnlijk comfortabel en ruim, maar meer city-base dan vakantiehuis.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>Ongeveer 0,4 km van het centrum; qua locatie is dit juist een van de sterkste kaarten in de hele lijst.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>Zeer centrale ligging.</li><li>Privé parkeren is een groot praktisch pluspunt.</li><li>120 m² klinkt royaal voor vier volwassenen.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Prijs sprong eerder, dus niet blind vertrouwen.</li><li>Slechts 2 slaapkamers; minder ruim verdeeld dan de huizen met 3 slaapkamers.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/1146972564997032812?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
       </article>
     </div>
 
     <h3 class="section-title">Meer opties</h3>
     <div class="list">
-      <article class="card"><img src="https://a0.muscache.com/im/pictures/b3c102eb-c57f-468e-9bd1-46bd2eb9d745.jpg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="Lovely spacious apartment near city center" /><div class="content"><div class="rank">Ruim alternatief</div><div class="topline"><div><h2>Lovely spacious apartment near to City Center</h2><div class="subtitle">Condo in København · 4,94/5 uit 35 reviews</div></div><div><div class="price">€1.360</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">5 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div><div class="badge-row"><span class="badge good">Waarschijnlijk betaald parkeren</span></div><p class="desc">Goede middenmoter als je net iets meer capaciteit wilt zonder meteen een groot huis te boeken.</p><div class="links"><a href="https://www.airbnb.com/rooms/723099448414722172?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div></article>
-      <article class="card"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1413829157249873041/original/ec8e8c23-48ed-46e6-8bcf-569533f0c805.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Modern Duplex in Carlsbergbyen" /><div class="content"><div class="rank">Carlsbergbyen</div><div class="topline"><div><h2>Modern Duplex in Carlsbergbyen</h2><div class="subtitle">Condo in Copenhagen · superhost · 4,94/5 uit 33 reviews</div></div><div><div class="price">€1.447</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span></div><div class="badge-row"><span class="badge good">Waarschijnlijk betaald parkeren</span></div><p class="desc">Modern en degelijk, maar qua prijs nu minder sterk dan eerst gedacht.</p><div class="links"><a href="https://www.airbnb.com/rooms/1413829157249873041?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div></article>
-      <article class="card"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-4802435/original/1481c331-71ec-465b-8400-b92ddd9e50fc.jpeg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="BEST LOCATION ON THE WATER" /><div class="content"><div class="rank">Waterlocatie</div><div class="topline"><div><h2>BEST LOCATION ON THE WATER!</h2><div class="subtitle">Rental unit in Copenhagen · 4,85/5 uit 104 reviews</div></div><div><div class="price">€1.468</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">5 personen</span><span class="pill">3 slaapkamers</span><span class="pill">4 bedden</span></div><div class="badge-row"><span class="badge warn">Parkeren nog niet gecheckt</span><span class="badge">Veel reviews</span></div><p class="desc">Duurder, maar sterk op ligging en reviewvolume.</p><div class="links"><a href="https://www.airbnb.com/rooms/4802435?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div></article>
-      <article class="card"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-36793086/original/b2f15b64-a25a-47e9-93ca-40ffbcb3633a.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Charming Apartment in Frederiksberg" /><div class="content"><div class="rank">Frederiksberg</div><div class="topline"><div><h2>Charming Apartment in Frederiksberg, Copenhagen</h2><div class="subtitle">Condo in Frederiksberg · superhost · 4,95/5 uit 20 reviews</div></div><div><div class="price">€1.543</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span></div><div class="badge-row"><span class="badge good">Waarschijnlijk betaald parkeren</span></div><p class="desc">Rustiger buurtgevoel, nog wel aardig centraal.</p><div class="links"><a href="https://www.airbnb.com/rooms/36793086?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div></article>
-      <article class="card"><img src="https://a0.muscache.com/im/pictures/ff725355-66e7-4a19-bb16-e190415e9014.jpg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="Your own townhouse with garden" /><div class="content"><div class="rank">Townhouse alternatief</div><div class="topline"><div><h2>Your own townhouse with garden in exclusive area</h2><div class="subtitle">Townhouse in Frederiksberg · 4,94/5 uit 18 reviews</div></div><div><div class="price">€1.566</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">5 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">2 badkamers</span></div><div class="badge-row"><span class="badge warn">Parkeren nog niet gecheckt</span></div><p class="desc">Interessant als je een rustiger, meer residentieel gevoel zoekt met tuin en extra badkamer.</p><div class="links"><a href="https://www.airbnb.com/rooms/22473865?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div></article>
-      <article class="card"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-24815672/original/12de3132-38ce-4c7d-973a-1eade4780f52.jpeg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="Private modern Home in the Heart of Copenhagen" /><div class="content"><div class="rank">Duurdere centrumoptie</div><div class="topline"><div><h2>Private, modern Home in the Heart of Copenhagen.</h2><div class="subtitle">Home in Copenhagen · 4,89/5 uit 108 reviews</div></div><div><div class="price">€1.897</div><div class="usd">4 volwassenen · totaalprijs via Airbnb API</div></div></div><div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span></div><div class="badge-row"><span class="badge warn">Parkeren nog niet gecheckt</span></div><p class="desc">Waarschijnlijk goed, maar prijstechnisch geen topper meer ten opzichte van de shortlist erboven.</p><div class="links"><a href="https://www.airbnb.com/rooms/24815672?check_in=2026-05-13&check_out=2026-05-17&adults=4">Open Airbnb</a></div></div></article>
+      <article class="card">
+        <img src="https://a0.muscache.com/im/pictures/b3c102eb-c57f-468e-9bd1-46bd2eb9d745.jpg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="Lovely spacious apartment near city center" />
+        <div class="content">
+          <div class="rank">#6 · Ruim alternatief</div>
+          <div class="topline">
+            <div>
+              <h2>Lovely spacious apartment near to City Center</h2>
+              <div class="subtitle">Condo in København · 4,94/5 uit 35 reviews</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.360</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">5 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
+          <div class="badge-row"><span class="badge good">Waarschijnlijk betaald parkeren</span><span class="badge">Redelijk centraal</span><span class="badge">Solide reviews</span></div>
+          <p class="desc">Een nette reserve-optie als je vooral iets ruims en betrouwbaar zoekt zonder extreem uitgesproken profiel. Niet de goedkoopste, maar wel vrij overzichtelijk qua risico.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Ruim appartement/condo; waarschijnlijk functioneel en comfortabel, eerder praktisch dan bijzonder.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>Near city center suggereert bruikbare ligging zonder echte premium binnenstadscore.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>35 reviews geeft meer vertrouwen dan veel nieuwere listings.</li><li>Ruimtelijk genoeg voor vier personen.</li><li>Geen rare uitschieter qua profiel; gewoon degelijk.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Voor deze prijs zijn er karaktervollere alternatieven.</li><li>Maar 2 slaapkamers en 1 badkamer.</li><li>Parkeren blijft een inschatting, geen harde bevestiging.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/723099448414722172?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1413829157249873041/original/ec8e8c23-48ed-46e6-8bcf-569533f0c805.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Modern Duplex in Carlsbergbyen" />
+        <div class="content">
+          <div class="rank">#7 · Modern duplex in Carlsbergbyen</div>
+          <div class="topline">
+            <div>
+              <h2>Modern Duplex in Carlsbergbyen</h2>
+              <div class="subtitle">Condo in Copenhagen · superhost · 4,94/5 uit 33 reviews</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.447</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">Duplex-indeling</span></div>
+          <div class="badge-row"><span class="badge good">Waarschijnlijk betaald parkeren</span><span class="badge">Carlsbergbyen</span><span class="badge">Superhost</span></div>
+          <p class="desc">Klinkt als een strakke, moderne stadsoptie in een populaire nieuwere wijk. Aantrekkelijk als je juist voor design en stedelijke vibe gaat, minder als je maximaal waar voor je geld zoekt.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Modern duplex-appartement; vaak prettig omdat wonen en slapen meer gescheiden voelen dan in een standaard flat.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>Carlsbergbyen is niet het historisch centrum, maar wel een interessante stedelijke zone met goede verbindingen en modern buurtgevoel.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>Goede reviews en superhost-status.</li><li>Moderne wijk en vermoedelijk nette afwerking.</li><li>Duplex-opzet kan prettiger voelen dan één vlak appartement.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Prijs loopt al aardig op.</li><li>Geen duidelijke extra's zoals tuin, strand of bevestigde parkeerplek.</li><li>Waarschijnlijk minder ruim dan de huizenopties.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/1413829157249873041?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-4802435/original/1481c331-71ec-465b-8400-b92ddd9e50fc.jpeg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="BEST LOCATION ON THE WATER" />
+        <div class="content">
+          <div class="rank">#8 · Waterlocatie met veel reviews</div>
+          <div class="topline">
+            <div>
+              <h2>BEST LOCATION ON THE WATER!</h2>
+              <div class="subtitle">Rental unit in Copenhagen · 4,85/5 uit 104 reviews</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.468</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">5 personen</span><span class="pill">3 slaapkamers</span><span class="pill">4 bedden</span><span class="pill">104 reviews</span></div>
+          <div class="badge-row"><span class="badge warn">Parkeren nog niet gecheckt</span><span class="badge">Waterlocatie</span><span class="badge">Veel bewezen reviews</span></div>
+          <p class="desc">Dit is een klassiek geval van: duurder, maar ook veel zekerder qua track record en ligging. Vooral interessant als je reviewvolume en waterbeleving zwaarder laat wegen dan pure prijs-efficiëntie.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Stadsappartement aan het water; vermoedelijk levendig, aantrekkelijk gelegen en meer gericht op locatiebeleving dan op huiselijk comfort.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>De titel suggereert sterk op waterlocatie; meestal aantrekkelijk voor sfeer en wandelingen, mogelijk ook behoorlijk goed voor stedelijke toegang.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>104 reviews geeft verreweg de meeste sociale bewijskracht in de lijst.</li><li>3 slaapkamers en 4 bedden is praktisch.</li><li>Waterlocatie is inhoudelijk aantrekkelijk.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Prijs is duidelijk hoger dan shortlist-top.</li><li>Parkeren niet bevestigd.</li><li>Mogelijk betaal je hier vooral voor locatie en minder voor extra comfortfeatures.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/4802435?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-36793086/original/b2f15b64-a25a-47e9-93ca-40ffbcb3633a.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Charming Apartment in Frederiksberg" />
+        <div class="content">
+          <div class="rank">#9 · Rustiger Frederiksberg-alternatief</div>
+          <div class="topline">
+            <div>
+              <h2>Charming Apartment in Frederiksberg, Copenhagen</h2>
+              <div class="subtitle">Condo in Frederiksberg · superhost · 4,95/5 uit 20 reviews</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.543</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">Superhost</span></div>
+          <div class="badge-row"><span class="badge good">Waarschijnlijk betaald parkeren</span><span class="badge">Frederiksberg</span><span class="badge">Rustiger buurtgevoel</span></div>
+          <p class="desc">Goede optie als Frederiksberg jullie aanspreekt en je liever in een nette woonwijk zit dan midden tussen de toeristische drukte. Het profiel voelt degelijk, maar de prijs zit wel duidelijk boven de beste deals.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Charmant appartement/condo; waarschijnlijk wat warmer en klassieker qua uitstraling dan de modernere duplex- of waterfront-opties.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>Frederiksberg is vaak een prettige compromislocatie: redelijk centraal, maar rustiger en residentiëler.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>Superhost + sterke score geeft vertrouwen.</li><li>Frederiksberg is vaak een fijne uitvalsbasis.</li><li>Charmante, woonachtige vibe kan aantrekkelijker voelen dan een zakelijke city flat.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Prijs is aan de hoge kant voor 2 slaapkamers.</li><li>Geen harde parkeerbevestiging.</li><li>Minder uniek qua features dan sommige andere duurdere opties.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/36793086?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://a0.muscache.com/im/pictures/ff725355-66e7-4a19-bb16-e190415e9014.jpg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="Your own townhouse with garden" />
+        <div class="content">
+          <div class="rank">#10 · Duurder townhouse-alternatief</div>
+          <div class="topline">
+            <div>
+              <h2>Your own townhouse with garden in exclusive area</h2>
+              <div class="subtitle">Townhouse in Frederiksberg · 4,94/5 uit 18 reviews</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.566</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">5 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">2 badkamers</span></div>
+          <div class="badge-row"><span class="badge warn">Parkeren nog niet gecheckt</span><span class="badge">Frederiksberg</span><span class="badge">Tuin + townhouse</span></div>
+          <p class="desc">Inhoudelijk best sterk, want townhouse + tuin + 2 badkamers is prettig voor vier volwassenen. Alleen schuift de prijs hier zó op dat de eerder genoemde huizenopties meestal meer waarde lijken te geven.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Townhouse in exclusievere woonomgeving; waarschijnlijk rustiger, chiquer en meer privé aanvoelend dan de gemiddelde stadsflat.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>Frederiksberg betekent doorgaans goede balans tussen nette woonbuurt en nog steeds prima toegang tot de stad.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>3 slaapkamers én 2 badkamers is sterk.</li><li>Tuin en townhouse-opzet voelen comfortabeler voor een groep.</li><li>Exclusiever, residentieel buurtgevoel kan prettig zijn.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Prijs zit hoog.</li><li>Parkeren nog onduidelijk.</li><li>Moeilijk te verdedigen als de goedkopere huizenopties nog beschikbaar zijn.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/22473865?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-24815672/original/12de3132-38ce-4c7d-973a-1eade4780f52.jpeg?im_w=1200&amp;width=1200&amp;quality=80&amp;auto=webp" alt="Private modern Home in the Heart of Copenhagen" />
+        <div class="content">
+          <div class="rank">#11 · Duurdere centrumoptie</div>
+          <div class="topline">
+            <div>
+              <h2>Private, modern Home in the Heart of Copenhagen</h2>
+              <div class="subtitle">Home in Copenhagen · 4,89/5 uit 108 reviews</div>
+            </div>
+            <div class="price-box">
+              <div class="price">€1.897</div>
+              <div class="usd">4 volwassenen · totaalprijs via Airbnb API</div>
+            </div>
+          </div>
+          <div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">108 reviews</span></div>
+          <div class="badge-row"><span class="badge warn">Parkeren nog niet gecheckt</span><span class="badge">Hart van Kopenhagen</span><span class="badge">Veel reviews</span></div>
+          <p class="desc">Waarschijnlijk gewoon goed, betrouwbaar en erg centraal — maar prijs-technisch zit dit in een zone waar je echt een sterke voorkeur voor centrum moet hebben om het logisch te maken.</p>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Type / sfeer</strong>Modern home in de stad; vermoedelijk strak, verzorgd en comfortabel, met meer city-lifestyle dan uitgesproken lokaal woongevoel.</div>
+            <div class="detail-box"><strong>Ligging t.o.v. centrum</strong>In het hart van Kopenhagen, dus qua loopbaarheid en directe toegang bijna niet te verslaan.</div>
+          </div>
+          <div class="pros-cons">
+            <div class="detail-box"><h3>Waarom interessant</h3><ul><li>108 reviews geeft veel vertrouwen.</li><li>Zeer centrale ligging.</li><li>Modern en waarschijnlijk zorgeloos qua kwaliteit.</li></ul></div>
+            <div class="detail-box"><h3>Mogelijke nadelen</h3><ul><li>Veruit de duurste optie in de lijst.</li><li>Maar 2 slaapkamers en geen bevestigde parkeeroplossing.</li><li>Waarde per euro voelt duidelijk minder sterk dan de shortlist-top.</li></ul></div>
+          </div>
+          <div class="links"><a href="https://www.airbnb.com/rooms/24815672?check_in=2026-05-13&amp;check_out=2026-05-17&amp;adults=4">Open Airbnb met data</a></div>
+        </div>
+      </article>
     </div>
 
-    <p class="note">Parkeerlabels zijn pragmatisch: <strong>privé</strong> is hard bevestigd wanneer het expliciet in de listingtitel of duidelijke page-tekst stond. Bij “waarschijnlijk free/betaald parkeren” heb ik de listingtekst gescand op woorden als <em>free parking</em>, <em>paid parking</em> of <em>parking</em>; dat helpt, maar is minder hard dan een expliciet amenities-overzicht. Belangrijk: deze versie van de lijst is nu opnieuw gebaseerd op prijzen voor <strong>4 volwassenen</strong>, juist om rare prijsafwijkingen te vermijden.</p>
+    <p class="note">Parkeerlabels zijn pragmatisch: <strong>privé</strong> is hard bevestigd wanneer het expliciet in titel of duidelijke listingtekst stond. Bij “waarschijnlijk” gaat het om aanwijzingen in de tekst, niet om een volledig handmatig nagelopen amenities-overzicht. Deze lijst is vooral bedoeld om de opties inhoudelijk goed naast elkaar te zetten voor <strong>4 volwassenen</strong>, zodat de verschillen per listing sneller zichtbaar zijn.</p>
   </div>
 </body>
 </html>
