@@ -17,10 +17,10 @@
       --tag: #f3f4f6;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.45; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+    body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 24px 16px 48px; }
     h1 { margin: 0 0 10px; font-size: 32px; }
-    .intro { color: var(--muted); max-width: 820px; margin-bottom: 24px; }
+    .intro { color: var(--muted); max-width: 860px; margin-bottom: 24px; }
     .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 24px; }
     .meta .box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
     .section-title { margin: 28px 0 12px; font-size: 22px; }
@@ -31,6 +31,7 @@
     .topline { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 8px; }
     .rank { display: inline-block; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
     h2 { margin: 0 0 6px; font-size: 23px; }
+    .subtitle { color: var(--muted); }
     .price { font-size: 26px; font-weight: 700; white-space: nowrap; }
     .usd { color: var(--muted); font-size: 13px; margin-top: 2px; text-align: right; }
     .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
@@ -40,7 +41,7 @@
     .badge.good { color: var(--good); background: #ecfdf5; }
     .badge.warn { color: var(--warn); background: #fff7ed; }
     .desc { margin: 0 0 12px; }
-    .parking { font-weight: 600; color: var(--good); margin-bottom: 10px; }
+    .details { display:grid; gap:6px; margin: 0 0 12px; color:#374151; font-size:15px; }
     .links a { display: inline-block; margin-right: 14px; color: var(--accent); text-decoration: none; font-weight: 600; }
     .note { margin-top: 28px; color: var(--muted); font-size: 14px; }
     @media (max-width: 860px) {
@@ -49,7 +50,6 @@
       .topline { flex-direction: column; }
       .usd { text-align: left; }
     }
-
     @media (max-width: 520px) {
       .wrap { padding: 16px 12px 36px; }
       h1 { font-size: 26px; }
@@ -68,7 +68,7 @@
   <div class="wrap">
     <h1>Kopenhagen shortlist — Hemelvaart 2026</h1>
     <p class="intro">
-      Voor <strong>woensdag 13 mei t/m zondag 17 mei 2026</strong>. Gefilterd op minimaal <strong>4 personen</strong>, <strong>2 slaapkamers</strong> en <strong>3 bedden</strong>. Prijzen komen nu direct uit de Airbnb-search API in <strong>euro</strong>.
+      Voor <strong>woensdag 13 mei t/m zondag 17 mei 2026</strong>. Gefilterd op minimaal <strong>4 personen</strong>, <strong>2 slaapkamers</strong> en <strong>3 bedden</strong>. Prijzen komen direct uit de Airbnb-search API in <strong>euro</strong>. Ik heb per optie extra context toegevoegd over ligging ten opzichte van het centrum, type woning en opvallende plus- en minpunten.
     </p>
 
     <div class="meta">
@@ -83,10 +83,15 @@
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1146972564997032812/original/15023e1d-034b-485a-817b-29f3e76c814e.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Apartment center of Copenhagen - Private parking" />
         <div class="content">
           <div class="rank">Beste match voor jullie eisen</div>
-          <div class="topline"><div><h2>Apartment (120 sqm) center of Copenhagen - Private parking</h2><div>Centrum Kopenhagen · superhost · 4,92/5 uit 24 reviews</div></div><div><div class="price">€1.297</div><div class="usd">origineel €1.909, nu €1.297 totaal</div></div></div>
+          <div class="topline"><div><h2>Apartment (120 sqm) center of Copenhagen - Private parking</h2><div class="subtitle">Rental unit in Copenhagen · 4,92/5 uit 24 reviews</div></div><div><div class="price">€1.297</div><div class="usd">origineel €1.909, nu €1.297 totaal</div></div></div>
           <div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
-          <div class="badge-row"><span class="badge good">Privé parkeren genoemd</span><span class="badge">Goede centrumlocatie</span></div>
-          <p class="desc">Dit is de strakste match op jouw wensen: centraal, groot appartement, precies genoeg slaapkamers/bedden en expliciet privé parkeren.</p>
+          <div class="badge-row"><span class="badge good">Privé parkeren genoemd</span><span class="badge good">Centrumlocatie</span></div>
+          <p class="desc">Dit is de strakste match op jouw wensen: groot stadsappartement, goede reviews, precies genoeg slaapkamers/bedden en expliciet privé parkeren.</p>
+          <div class="details">
+            <div><strong>Inrichting / type:</strong> grote stadswoning van 120 m²; voelt meer als een ruime city base dan als een vakantiehuis.</div>
+            <div><strong>Ligging t.o.v. centrum:</strong> ongeveer 0,4 km van het centrum — dus echt centraal.</div>
+            <div><strong>Bijzonderheden:</strong> duidelijkste parkeeroptie van de lijst en daardoor waarschijnlijk de veiligste keuze als auto belangrijk is.</div>
+          </div>
           <div class="links"><a href="https://airbnb.com/rooms/1146972564997032812">Open Airbnb</a></div>
         </div>
       </article>
@@ -95,10 +100,15 @@
         <img src="https://a0.muscache.com/im/pictures/miso/Hosting-900423174683523109/original/fd1cfdef-c22b-44c7-90d3-f6e7d64083cb.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Amager Strand Townhouse" />
         <div class="content">
           <div class="rank">Ruim + strand</div>
-          <div class="topline"><div><h2>Amager Strand Townhouse B&amp;W next to beach</h2><div>Kopenhagen · superhost · 5,0/5 uit 11 reviews</div></div><div><div class="price">€1.110</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
+          <div class="topline"><div><h2>Amager Strand Townhouse B&amp;W next to beach</h2><div class="subtitle">Home in Copenhagen · superhost · 5,0/5 uit 11 reviews</div></div><div><div class="price">€1.110</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
           <div class="facts"><span class="pill">5 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">2,5 badkamers</span></div>
           <div class="badge-row"><span class="badge good">Waarschijnlijk parkeren aanwezig</span><span class="badge">Dicht bij strand</span></div>
-          <p class="desc">Sterke optie als je wat meer ruimte wilt en het leuk vindt om dichter bij Amager Strand te zitten. Ook handig door de extra badkamer.</p>
+          <p class="desc">Sterke optie als je meer ruimte en wat vakantiegevoel wilt. Vooral aantrekkelijk door de extra badkamer en de strandlocatie.</p>
+          <div class="details">
+            <div><strong>Inrichting / type:</strong> townhouse / huis; voelt praktischer en ruimer dan een standaard appartement.</div>
+            <div><strong>Ligging t.o.v. centrum:</strong> ongeveer 4,4 km van het centrum — nog prima, maar duidelijk minder centraal.</div>
+            <div><strong>Bijzonderheden:</strong> strand plus extra badkamer maken dit een fijne optie als comfort belangrijker is dan centrumlopen.</div>
+          </div>
           <div class="links"><a href="https://airbnb.com/rooms/900423174683523109">Open Airbnb</a></div>
         </div>
       </article>
@@ -107,10 +117,15 @@
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1499869660001298704/original/90d24026-b29b-4171-acf5-983b0dcbdfca.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Nice house in Copenhagen" />
         <div class="content">
           <div class="rank">Goede prijs / ruimte</div>
-          <div class="topline"><div><h2>Nice house in Copenhagen with garden and close to metro</h2><div>Kopenhagen · 5,0/5 uit 3 reviews</div></div><div><div class="price">€1.139</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
+          <div class="topline"><div><h2>Nice house in Copenhagen with garden and close to metro</h2><div class="subtitle">Home in Copenhagen · 5,0/5 uit 3 reviews</div></div><div><div class="price">€1.139</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
           <div class="facts"><span class="pill">6 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
           <div class="badge-row"><span class="badge good">Free parking gevonden in listingtekst</span><span class="badge">Tuin + metro</span></div>
-          <p class="desc">Interessant als je liever iets huiselijks wilt met tuin en metro in de buurt. Minder reviews, maar wel goede prijs voor de ruimte.</p>
+          <p class="desc">Aantrekkelijk als je liever wat meer woongevoel hebt. Vooral handig als je een tuin waardeert en niet per se in het absolute centrum hoeft te zitten.</p>
+          <div class="details">
+            <div><strong>Inrichting / type:</strong> echt huis in plaats van compact stadsappartement; waarschijnlijk rustiger en huiselijker.</div>
+            <div><strong>Ligging t.o.v. centrum:</strong> ongeveer 4,2 km van het centrum.</div>
+            <div><strong>Bijzonderheden:</strong> metro dichtbij en tuin zijn hier de duidelijke pluspunten; voor een auto lijkt dit ook een interessante kandidaat.</div>
+          </div>
           <div class="links"><a href="https://airbnb.com/rooms/1499869660001298704">Open Airbnb</a></div>
         </div>
       </article>
@@ -119,10 +134,15 @@
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1408651218457630062/original/5fc0f0ca-e46f-476b-a702-529449ba7a73.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Villa apartment in Valby" />
         <div class="content">
           <div class="rank">Beste budgetoptie</div>
-          <div class="topline"><div><h2>Villa apartment in Valby</h2><div>Kopenhagen · superhost · 5,0/5 uit 14 reviews</div></div><div><div class="price">€696</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
+          <div class="topline"><div><h2>Villa apartment in Valby</h2><div class="subtitle">Condo in Copenhagen · superhost · 5,0/5 uit 14 reviews</div></div><div><div class="price">€696</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
           <div class="facts"><span class="pill">4 personen</span><span class="pill">3 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
           <div class="badge-row"><span class="badge warn">Parkeren niet hard bevestigd</span><span class="badge">Veruit goedkoopst</span></div>
-          <p class="desc">Veruit de goedkoopste optie die nog netjes binnen je eisen valt. Vooral interessant als prijs zwaar meeweegt.</p>
+          <p class="desc">Veruit de goedkoopste optie die nog binnen je eisen valt. Vooral interessant als prijs het zwaarst weegt.</p>
+          <div class="details">
+            <div><strong>Inrichting / type:</strong> condo / villa-appartement; waarschijnlijk simpeler en functioneler dan de duurdere centrumopties.</div>
+            <div><strong>Ligging t.o.v. centrum:</strong> ongeveer 5,5 km van het centrum — duidelijk buiten de kern.</div>
+            <div><strong>Bijzonderheden:</strong> als je toch vooral slaapplek zoekt en minder geeft om toplocatie, is dit de prijspakker.</div>
+          </div>
           <div class="links"><a href="https://airbnb.com/rooms/1408651218457630062">Open Airbnb</a></div>
         </div>
       </article>
@@ -131,10 +151,15 @@
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1413829157249873041/original/ec8e8c23-48ed-46e6-8bcf-569533f0c805.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Modern Duplex in Carlsbergbyen" />
         <div class="content">
           <div class="rank">Net middenklasse-appartement</div>
-          <div class="topline"><div><h2>Modern Duplex in Carlsbergbyen</h2><div>Kopenhagen · superhost · 4,94/5 uit 33 reviews</div></div><div><div class="price">€1.384</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
+          <div class="topline"><div><h2>Modern Duplex in Carlsbergbyen</h2><div class="subtitle">Condo in Copenhagen · superhost · 4,94/5 uit 33 reviews</div></div><div><div class="price">€1.384</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
           <div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
           <div class="badge-row"><span class="badge good">Waarschijnlijk betaald parkeren</span><span class="badge">Sterke reviews</span></div>
-          <p class="desc">Veilige allrounder als je vooral een nette, moderne stadsoptie zoekt zonder dat het meteen de duurste van de lijst is.</p>
+          <p class="desc">Een veilige allrounder: modern, goede reviews en nog redelijk dicht bij het centrum.</p>
+          <div class="details">
+            <div><strong>Inrichting / type:</strong> moderne duplex / condo, dus waarschijnlijk strakker en nieuwer ingericht.</div>
+            <div><strong>Ligging t.o.v. centrum:</strong> ongeveer 2,3 km van het centrum — fijne middenweg.</div>
+            <div><strong>Bijzonderheden:</strong> Carlsbergbyen is vaak een prettige wijk als je niet midden in de toeristische drukte wilt zitten.</div>
+          </div>
           <div class="links"><a href="https://airbnb.com/rooms/1413829157249873041">Open Airbnb</a></div>
         </div>
       </article>
@@ -146,10 +171,15 @@
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-36793086/original/b2f15b64-a25a-47e9-93ca-40ffbcb3633a.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Charming Apartment in Frederiksberg" />
         <div class="content">
           <div class="rank">Sterke reviews</div>
-          <div class="topline"><div><h2>Charming Apartment in Frederiksberg, Copenhagen</h2><div>Frederiksberg · superhost · 4,95/5 uit 20 reviews</div></div><div><div class="price">€1.544</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
+          <div class="topline"><div><h2>Charming Apartment in Frederiksberg, Copenhagen</h2><div class="subtitle">Condo in Frederiksberg · superhost · 4,95/5 uit 20 reviews</div></div><div><div class="price">€1.544</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
           <div class="facts"><span class="pill">4 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
           <div class="badge-row"><span class="badge good">Waarschijnlijk betaald parkeren</span></div>
-          <p class="desc">Nette, klassieke Frederiksberg-optie met goede reviews. Handig als je een rustigere maar nog centrale buurt wilt.</p>
+          <p class="desc">Nette Frederiksberg-optie met sterke reviews, voor als je een rustigere maar nog vrij centrale uitvalsbasis wilt.</p>
+          <div class="details">
+            <div><strong>Inrichting / type:</strong> klassiek appartement / condo, waarschijnlijk iets traditioneler dan de modernere nieuwbouwopties.</div>
+            <div><strong>Ligging t.o.v. centrum:</strong> ongeveer 1,9 km van het centrum.</div>
+            <div><strong>Bijzonderheden:</strong> Frederiksberg voelt vaak wat rustiger en lokaler dan het absolute centrum.</div>
+          </div>
           <div class="links"><a href="https://airbnb.com/rooms/36793086">Open Airbnb</a></div>
         </div>
       </article>
@@ -158,17 +188,22 @@
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-723099448414722172/original/24aa2ddf-2f6e-4b0c-a271-d1788d857d73.jpeg?im_w=1200&amp;width=1200&amp;q=80" alt="Lovely spacious apartment near city center" />
         <div class="content">
           <div class="rank">Ruim 2-slaapkamer alternatief</div>
-          <div class="topline"><div><h2>Lovely spacious apartment near to City Center</h2><div>København · 4,94/5 uit 35 reviews</div></div><div><div class="price">€1.360</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
+          <div class="topline"><div><h2>Lovely spacious apartment near to City Center</h2><div class="subtitle">Condo in København · 4,94/5 uit 35 reviews</div></div><div><div class="price">€1.360</div><div class="usd">totaalprijs via Airbnb API</div></div></div>
           <div class="facts"><span class="pill">5 personen</span><span class="pill">2 slaapkamers</span><span class="pill">3 bedden</span><span class="pill">1 badkamer</span></div>
           <div class="badge-row"><span class="badge good">Waarschijnlijk betaald parkeren</span></div>
-          <p class="desc">Goede middenmoter als je net iets meer capaciteit wilt zonder meteen een groot huis te boeken.</p>
+          <p class="desc">Goede middenmoter als je net iets meer capaciteit wilt zonder meteen naar een grote woning te gaan.</p>
+          <div class="details">
+            <div><strong>Inrichting / type:</strong> ruim appartement, vermoedelijk meer klassiek woongevoel dan design/nieuwbouw.</div>
+            <div><strong>Ligging t.o.v. centrum:</strong> ongeveer 3,1 km van het centrum.</div>
+            <div><strong>Bijzonderheden:</strong> vooral interessant als balans-optie tussen ruimte, reviews en prijs.</div>
+          </div>
           <div class="links"><a href="https://airbnb.com/rooms/723099448414722172">Open Airbnb</a></div>
         </div>
       </article>
     </div>
 
     <p class="note">
-      Parkeerlabels zijn hier pragmatisch: <strong>privé</strong> is hard bevestigd wanneer het expliciet in de listingtitel of duidelijke page-tekst stond. Bij “waarschijnlijk betaald/free parkeren” heb ik de listingtekst gescand op woorden als <em>free parking</em>, <em>paid parking</em> of <em>parking</em>, maar dat blijft minder hard dan een expliciete voorziening in de listingdetails.
+      Parkeerlabels zijn pragmatisch: <strong>privé</strong> is hard bevestigd wanneer het expliciet in de listingtitel of duidelijke page-tekst stond. Bij “waarschijnlijk free/betaald parkeren” heb ik de listingtekst gescand op woorden als <em>free parking</em>, <em>paid parking</em> of <em>parking</em>; dat is nuttig, maar minder hard dan een expliciet amenities-overzicht.
     </p>
   </div>
 </body>
